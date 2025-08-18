@@ -43,5 +43,5 @@ cd jupy
 
 pip install -e .
 ```
-Then follow the same steps as mentioned earlier.
+Then follow the first two steps.
 
