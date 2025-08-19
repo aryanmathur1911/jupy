@@ -14,13 +14,7 @@ It sets up:
 
 NOTE : This tool is not currently published to PyPI, so you can't install it through pip directly. Therefore clone the repo as suggested below.
 
- if creating a new folder : 
-
-```bash
-jupy <folder_name>
-```
-
-## If you are cloning the repo locally:
+### To clone the repo and install jupy in your global space: 
 
 ```bash
 git clone https://github.com/aryanmathur1911/jupy.git
@@ -29,7 +23,7 @@ cd jupy
 
 pip install -e .
 ```
-or for linux/mac (given that you have pipx installed) :
+### or for linux/mac (given that you have pipx installed) :
 
 ```bash
 git clone https://github.com/aryanmathur1911/jupy.git
@@ -38,7 +32,7 @@ cd jupy
 
 pipx install -e .
 ```
-then :
+## Usage :
 Create a  jupyter project in current working directory :
 
 ```bash
