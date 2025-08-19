@@ -14,21 +14,7 @@ It sets up:
 
 NOTE : This tool is not currently published to PyPI, so you can't install it through pip directly. Therefore clone the repo as suggested below.
 
-You can install this package directly from PyPI:
-
-```bash
-pip install jupy
-```
-
-⚡ Usage
-
-Create a  jupyter project in current working directory :
-
-```bash
-jupy
-```
-
-or if creating a new folder : 
+ if creating a new folder : 
 
 ```bash
 jupy <folder_name>
