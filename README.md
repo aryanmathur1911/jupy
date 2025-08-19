@@ -1,4 +1,4 @@
-# Jupyt 📝⚡
+# Jupy 📝⚡
 
 A simple CLI tool to **create Jupyter Notebook projects with virtual environments** automatically.  
 
