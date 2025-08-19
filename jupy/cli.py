@@ -4,6 +4,7 @@ import os
 import sys
 import webbrowser
 import time
+import re
 
 
 def main():
@@ -41,25 +42,57 @@ def main():
         print(f"📦 Installing dependencies into {venv_path} ...")
         subprocess.run([python_bin, "-m", "pip", "install", "--upgrade", "pip"])
         subprocess.run([python_bin, "-m", "pip", "install", *packages])
-
     else:
-        # If already installed (e.g. via pipx), use current python
         python_bin = sys.executable
 
-    # Launch Jupyter Notebook without token
-    print("🚀 Launching Jupyter Notebook on http://localhost:8888/tree ...")
+    editor = input(
+        "\nDo you want to create a Jupyter Notebook or continue with VSCode? "
+        "[j = Jupyter, c = VSCode] : "
+    ).strip().lower()
 
-    subprocess.Popen([
-        python_bin, "-m", "notebook",
-        "--no-browser",
-        "--port=8888",
-        "--NotebookApp.token=''",
-        "--NotebookApp.password=''"
-    ], cwd=str(path))
+    if editor == "c":
+        print("🚀 Launching a Jupyter Notebook in Visual Studio Code ... ")
+        index_file = os.path.join(path, "index.ipynb")
+        if not os.path.exists(index_file):
+            with open(index_file, "w") as f:
+                f.write("")
+        subprocess.run(["code", path])
 
-    # Give Jupyter a few seconds to start
-    time.sleep(3)
-    webbrowser.open("http://localhost:8888/tree")
+    else:
+        print("🚀 Launching Jupyter Notebook (auto-detecting port)...")
+
+        proc = subprocess.Popen(
+            [
+                python_bin, "-m", "notebook",
+                "--no-browser",
+                "--NotebookApp.token=",
+                "--NotebookApp.password="
+            ],
+            cwd=str(path),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            shell=(os.name == "nt")
+        )
+
+        url = None
+        # Parse logs until we find the running URL
+        while True:
+            line = proc.stdout.readline()
+            if not line:
+                break
+            print(line, end="")  # show logs in console
+            match = re.search(r"(http://(?:localhost|127\.0\.0\.1)[^\s]*)", line)
+            if match and not url:
+                url = match.group(1)
+                # Open detected URL
+                time.sleep(2)
+                webbrowser.open(url)
+                print(f"🌐 Opening {url} in browser...")
+                break
+
+        # Keep process running
+        proc.wait()
 
 
 if __name__ == "__main__":
