@@ -34,7 +34,7 @@ or if creating a new folder :
 jupy <folder_name>
 ```
 
-##If you are cloning the repo locally:
+## If you are cloning the repo locally:
 
 ```bash
 git clone https://github.com/aryanmathur1911/jupy.git
@@ -43,5 +43,26 @@ cd jupy
 
 pip install -e .
 ```
-Then follow the first two steps.
+or for linux/mac (given that you have pipx installed) :
+
+```bash
+git clone https://github.com/aryanmathur1911/jupy.git
+
+cd jupy
+
+pipx install -e .
+```
+then :
+Create a  jupyter project in current working directory :
+
+```bash
+jupy
+```
+
+or if creating a new folder : 
+
+```bash
+jupy <folder_name>
+```
+
 
