@@ -42,12 +42,12 @@ def main():
     print("🚀 Launching Jupyter Notebook on http://localhost:8888/tree ...")
 
     subprocess.Popen([
-        python_bin, "-m", "notebook",
+        str(python_bin), "-m", "notebook",
         "--no-browser",
         "--port=8888",
         "--NotebookApp.token=''",
         "--NotebookApp.password=''"
-    ], cwd=path)
+    ], cwd=str(path))
 
     # Give Jupyter a few seconds to start
     time.sleep(3)
