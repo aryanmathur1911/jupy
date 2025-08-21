@@ -5,8 +5,9 @@ A simple CLI tool to **create Jupyter Notebook projects with virtual environment
 It sets up:  
 - A new project folder (or uses current folder).  
 - A Python virtual environment.  
-- Installs common data science packages.  
-- Launches **Jupyter Notebook** automatically in the environment.  
+- Installs common data science packages.
+- Asks if you want to launch a notebook in vscode or a jupyter notebook in browser.
+- Launches **Jupyter Notebook** automatically in the environment according to your choice.  
 
 ---
 
