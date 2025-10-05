@@ -22,7 +22,7 @@ git clone https://github.com/aryanmathur1911/jupy.git
 
 cd jupy
 
-pip install -e .
+pip install .
 ```
 ### or for linux/mac (given that you have pipx installed) :
 
@@ -31,7 +31,7 @@ git clone https://github.com/aryanmathur1911/jupy.git
 
 cd jupy
 
-pipx install -e .
+pipx install .
 ```
 ## Usage :
 Create a  jupyter project in current working directory :
