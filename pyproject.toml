@@ -15,3 +15,6 @@ dependencies = ["notebook", "numpy", "pandas", "matplotlib", "scikit-learn", "se
 
 [project.scripts]
 jupy = "jupy.cli:main"
+
+
+
